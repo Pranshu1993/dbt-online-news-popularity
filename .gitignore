@@ -1,0 +1,21 @@
+# Python venv
+dbt_env/
+venv/
+.env/
+
+# dbt build artifacts
+target/
+dbt_packages/
+logs/
+dbt.log
+
+# OS/editor junk
+__pycache__/
+*.pyc
+*.pyo
+*.log
+.vscode/
+.idea/
+
+# Misc
+.DS_Store

@@ -1,0 +1,18 @@
+version: 2
+
+models:
+  - name: stg_online_news_popularity
+    description: "Cleaned staging model for Online News Popularity dataset"
+    columns:
+      - name: url
+        tests: [not_null, unique]
+
+      - name: shares
+        description: "Target metric: number of social media shares"
+        tests: [not_null]
+
+      - name: n_tokens_title
+        tests: [not_null]
+
+      - name: n_tokens_content
+        tests: [not_null]

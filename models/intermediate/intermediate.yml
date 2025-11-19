@@ -1,0 +1,76 @@
+version: 2
+
+models:
+  - name: int_media_engagement
+    description: "Engagement features: media & link counts"
+    columns:
+      - name: url
+        tests:
+          - not_null
+          - unique
+          - relationships:
+              to: ref('stg_online_news_popularity')
+              field: url
+
+      - name: total_media
+        description: "Total images + videos"
+        tests:
+          - not_null
+          - dbt_utils.expression_is_true:
+              expression: ">= 0"
+
+      - name: total_links
+        description: "Total links"
+        tests:
+          - not_null
+
+  - name: int_popularity_labels
+    description: "Assigns a popularity category to each article"
+    columns:
+      - name: url
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_online_news_popularity')
+              field: url
+
+      - name: shares
+        tests:
+          - not_null
+          - dbt_utils.expression_is_true:
+              expression: "> 0"
+
+      - name: popularity_label
+        tests:
+          - accepted_values:
+              values: ['viral', 'medium', 'low']
+          - not_null
+
+  - name: int_sentiment_scoring
+    description: "Computed sentiment scores combining title and content polarity"
+    columns:
+      - name: url
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_online_news_popularity')
+              field: url
+
+      - name: title_sentiment_polarity
+        tests:
+          - not_null
+          - dbt_utils.expression_is_true:
+              expression: "between -1 and 1"
+
+      - name: global_sentiment_polarity
+        tests:
+          - not_null
+          - dbt_utils.expression_is_true:
+              expression: "between -1 and 1"
+
+      - name: sentiment_score
+        description: "Average of title and global polarity"
+        tests:
+          - not_null
+          - dbt_utils.expression_is_true:
+              expression: "between -1 and 1"

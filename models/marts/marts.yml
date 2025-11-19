@@ -1,0 +1,8 @@
+version: 2
+
+models:
+  - name: mrt_news_kpis
+    description: "Final data mart for BI dashboards and reporting."
+
+  - name: mrt_popularity_features
+    description: "Feature-rich table for ML or predictive analytics."
