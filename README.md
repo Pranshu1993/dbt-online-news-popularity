@@ -123,8 +123,4 @@ Running `dbt test` ensures upstream data + transformations respect basic quality
 
 ## 🔍 Lineage (DAG)
 
-The dbt DAG clearly shows the flow:
-
-## 🔍 Lineage (DAG)
-
 ![dbt DAG – lineage view](dbt_DAG_marts.png)
