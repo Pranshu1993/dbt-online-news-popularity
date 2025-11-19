@@ -19,3 +19,7 @@ __pycache__/
 
 # Misc
 .DS_Store
+
+# Images
+DAG_int_model.png
+dbt_DAG_stg.png

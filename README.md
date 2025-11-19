@@ -125,15 +125,6 @@ Running `dbt test` ensures upstream data + transformations respect basic quality
 
 The dbt DAG clearly shows the flow:
 
-```text
-raw.online_news_popularity
-        ↓
-stg_online_news_popularity
-        ↓
-+-----------------------------+
-|   int_media_engagement      |
-|   int_popularity_labels     |
-|   int_sentiment_scoring     |
-+-----------------------------+
-        ↓
-    mrt_news_kpis
+## 🔍 Lineage (DAG)
+
+![dbt DAG – lineage view](dbt_DAG_marts.png)
